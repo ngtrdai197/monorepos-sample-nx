@@ -16,6 +16,7 @@ import { ApiProductModule, ProductEntity } from '@monorepos/api/product';
       synchronize: false,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       migrations: [__dirname + './migrations/*{.ts,.js}'],
+      migrationsTableName: 'migrations',
       logging: !environment.production ? true : false,
     }),
     ApiProductModule,

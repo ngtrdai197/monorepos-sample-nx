@@ -1,7 +1,7 @@
+import * as path from 'path';
 const dotenv = require('dotenv');
 
 dotenv.config();
-
 module.exports = {
   type: 'mysql',
   host: process.env['DB_HOST'] || 'localhost',
@@ -10,10 +10,12 @@ module.exports = {
   password: process.env['DB_PASSOWRD'] || '12345678xxx',
   database: process.env['DB_NAME'] || 'sample_nx',
   synchronize: false,
-  entities: ['./**/*.entity{.ts,.js}'],
-  migrations: ['./migrations/*{.ts,.js}'],
+  entities: [path.join(__dirname, './**/*.entity{.ts,.js}')],
+  migrations: [path.join(__dirname, './migrations/./*{.ts,.js}')],
   cli: {
-    migrationsDir: './migrations',
+    migrationsDir: path.join(__dirname, './migrations'),
   },
   logging: true,
+  migrationsRun: true,
+  migrationsTableName: 'migrations',
 };
